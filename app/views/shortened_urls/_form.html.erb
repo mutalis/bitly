@@ -1,0 +1,25 @@
+<%= form_with(model: shortened_url, local: true) do |form| %>
+  <% if shortened_url.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(shortened_url.errors.count, "error") %> prohibited this shortened_url from being saved:</h2>
+
+      <ul>
+      <% shortened_url.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.text_field :url, id: :shortened_url_url, placeholder: 'Enter a link to shorten it', size: 70 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Shorten' %>
+  </div>
+<% end %>
+
+<% if @short_url %>
+  <p>Short Url: <%= link_to @short_url, @short_url, target: '_blank', rel: 'nofollow' %></p>
+<% end %>
