@@ -21,5 +21,11 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  database: bitly_production
+  pool:     5
+  username: bmi
+  password:
+  template: template0
